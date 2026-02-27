@@ -1,0 +1,26 @@
+{
+  "name": "cetys-pandemia-mvc",
+  "version": "1.0.0",
+  "description": "Evaluación del aprendizaje en pandemia - CETYS (Node.js + MongoDB) con MVC y vistas EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node scripts/seed.js"
+  },
+  "keywords": ["node", "express", "mongoose", "mongodb", "cetys", "pandemia", "mvc", "ejs"],
+  "author": "Anggelo Martinez",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.5.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

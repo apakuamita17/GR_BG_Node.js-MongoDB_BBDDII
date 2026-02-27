@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nueva evaluación</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Nueva evaluación</h1>
+    <nav>
+      <a href="/assessments">Volver</a>
+    </nav>
+  </header>
+  <main>
+    <form action="/assessments" method="post">
+      <label>Curso
+        <select name="course" required>
+          <% courses.forEach(c => { %>
+            <option value="<%= c._id %>"><%= c.title %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label>Tipo
+        <select name="type" required>
+          <option value="exam">exam</option>
+          <option value="project">project</option>
+          <option value="quiz">quiz</option>
+          <option value="presentation">presentation</option>
+        </select>
+      </label>
+      <label>Ponderación (%)
+        <input type="number" name="weight" min="0" max="100" value="10" required />
+      </label>
+      <label>Modalidad
+        <select name="modality" required>
+          <option value="online">online</option>
+          <option value="in-person">in-person</option>
+        </select>
+      </label>
+      <label>
+        <input type="checkbox" name="pandemicAdjustment" checked /> Ajuste por pandemia
+      </label>
+      <label>Fecha
+        <input type="date" name="date" required />
+      </label>
+      <button type="submit">Crear</button>
+    </form>
+  </main>
+</body>
+</html>

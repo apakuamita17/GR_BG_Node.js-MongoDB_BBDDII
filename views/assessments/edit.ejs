@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editar evaluación</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Editar evaluación</h1>
+    <nav>
+      <a href="/assessments">Volver</a>
+    </nav>
+  </header>
+  <main>
+    <form action="/assessments/<%= assessment._id %>?_method=PUT" method="post">
+      <label>Curso
+        <select name="course" required>
+          <% courses.forEach(c => { %>
+            <option value="<%= c._id %>" <%= String(c._id) === String(assessment.course) ? 'selected' : '' %>><%= c.title %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label>Tipo
+        <select name="type" required>
+          <option value="exam" <%= assessment.type==='exam'?'selected':'' %>>exam</option>
+          <option value="project" <%= assessment.type==='project'?'selected':'' %>>project</option>
+          <option value="quiz" <%= assessment.type==='quiz'?'selected':'' %>>quiz</option>
+          <option value="presentation" <%= assessment.type==='presentation'?'selected':'' %>>presentation</option>
+        </select>
+      </label>
+      <label>Ponderación (%)
+        <input type="number" name="weight" min="0" max="100" value="<%= assessment.weight %>" required />
+      </label>
+      <label>Modalidad
+        <select name="modality" required>
+          <option value="online" <%= assessment.modality==='online'?'selected':'' %>>online</option>
+          <option value="in-person" <%= assessment.modality==='in-person'?'selected':'' %>>in-person</option>
+        </select>
+      </label>
+      <label>
+        <input type="checkbox" name="pandemicAdjustment" <%= assessment.pandemicAdjustment? 'checked':'' %> /> Ajuste por pandemia
+      </label>
+      <label>Fecha
+        <input type="date" name="date" value="<%= new Date(assessment.date).toISOString().substring(0,10) %>" required />
+      </label>
+      <button type="submit">Actualizar</button>
+    </form>
+  </main>
+</body>
+</html>

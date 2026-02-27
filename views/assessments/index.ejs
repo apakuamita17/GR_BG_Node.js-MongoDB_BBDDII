@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evaluaciones</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Evaluaciones</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/assessments/new">Nueva evaluación</a>
+    </nav>
+  </header>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Tipo</th>
+          <th>Ponderación</th>
+          <th>Modalidad</th>
+          <th>Ajuste COVID</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% assessments.forEach(a => { %>
+        <tr>
+          <td><%= a.course?.title || '—' %></td>
+          <td><%= a.type %></td>
+          <td><%= a.weight %>%</td>
+          <td><%= a.modality %></td>
+          <td><%= a.pandemicAdjustment ? 'Sí' : 'No' %></td>
+          <td><%= new Date(a.date).toLocaleDateString('es-VE') %></td>
+          <td>
+            <a href="/assessments/<%= a._id %>/edit">Editar</a>
+            <form action="/assessments/<%= a._id %>?_method=DELETE" method="post" style="display:inline" onsubmit="return confirm('¿Eliminar esta evaluación?');">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

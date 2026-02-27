@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+
+  <!-- Estilo personalizado -->
+  <style>
+    :root {
+      --primary: #0a4bff;
+      --primary-dark: #0738c2;
+      --background: #f5f7fb;
+      --text-main: #1f1f1f;
+      --text-light: #555;
+      --card-bg: #fff;
+      --border: #e5e8ef;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text-main);
+    }
+
+    header {
+      background: var(--primary);
+      padding: 22px;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 18px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      margin-bottom: 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary-dark);
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .info-list li {
+      margin: 8px 0;
+      color: var(--text-light);
+    }
+
+    .btn-link {
+      display: inline-block;
+      padding: 10px 16px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .btn-link:hover {
+      background: var(--primary-dark);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-light);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Evaluación del Aprendizaje en Pandemia – CETYS</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/assessments">CRUD Evaluaciones</a>
+      <a href="/api">API JSON</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="card">
+      <h2>Descripción del Proyecto</h2>
+      <p>
+        Esta aplicación web permite gestionar evaluaciones relacionadas con el contexto 
+        educativo durante la pandemia, implementando un sistema CRUD completo en Node.js, 
+        Express, MongoDB y vistas EJS bajo el patrón MVC.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Estado del Sistema</h2>
+      <ul class="info-list">
+        <li>Conexión a la API: <strong><%= apiOk ? "Activa ✓" : "Inactiva ✗" %></strong></li>
+        <li>Base de datos: <strong>Conectada a MongoDB local</strong></li>
+        <li>Módulo CRUD disponible: <strong>Evaluaciones</strong></li>
+      </ul>
+      <a class="btn-link" href="/assessments">Ir al CRUD de Evaluaciones</a>
+    </div>
+
+    <div class="card">
+      <h2>Enlaces Importantes</h2>
+      <ul class="info-list">
+        <li><a href="/api" target="_blank">Ver API Principal</a></li>
+        <li><a href="/api/assessments" target="_blank">Lista de Evaluaciones (JSON)</a></li>
+        <li><a href="/api/assessments/search/by-modality?modality=online" target="_blank">
+          Consulta sencilla por modalidad
+        </a></li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    Proyecto académico · Node.js + Express + MongoDB · CETYS – 2026
+  </footer>
+
+</body>
+</html>
